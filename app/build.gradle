@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "ru.app.currency"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+
+        buildConfigField("String", "BASE_EXCHANGE_URL", BASE_EXCHANGE_URL)
+
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api project(':data')
+    api project(':domain')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:$appcompat"
+    implementation "com.google.android.material:material:$material"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
+
+    //moxy
+    implementation "com.github.moxy-community:moxy:$moxy"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt "com.github.moxy-community:moxy-compiler:$moxy"
+    implementation "com.github.moxy-community:moxy-android:$moxy"
+    implementation "com.github.moxy-community:moxy-androidx:$moxy"
+
+    //dagger
+    api "com.google.dagger:dagger:$dagger"
+    api "com.google.dagger:dagger-android:$dagger"
+    api "com.google.dagger:dagger-android-support:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
+    kapt "com.google.dagger:dagger-android-processor:$dagger"
+
+}

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Currency</string>
+
+    <string name="action_exchange">Exchange</string>
+    <string name="action_ok">Ok</string>
+
+    <string name="hint_zero">0.00</string>
+    <string name="currency_amount">You have: %1$s%2$s</string>
+    <string name="receipt">Receipt %1$s to account %2$s. Available balance: %3$s</string>
+    <string name="accounts">Available accounts:\n%1$s</string>
+    <string name="not_enough">Amount is not enough</string>
+
+</resources>

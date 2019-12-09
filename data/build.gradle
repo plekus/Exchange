@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "de.mannodermaus.android-junit5"
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api project(':domain')
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //rxjava
+    api "io.reactivex.rxjava2:rxandroid:$rxandroid"
+
+    //retrofit
+    api "com.squareup.retrofit2:retrofit:$retrofit"
+    api "com.squareup.retrofit2:converter-gson:$retrofit"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
+
+    //tests
+    testApi "org.hamcrest:hamcrest-library:$hamcrest"
+    testApi "org.spekframework.spek2:spek-dsl-jvm:$spek"
+    testApi "org.spekframework.spek2:spek-runner-junit5:$spek"
+    testApi "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    testApi "org.junit.jupiter:junit-jupiter-api:$junit5"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit5"
+    testApi "org.mockito:mockito-core:$mockito"
+
+}
