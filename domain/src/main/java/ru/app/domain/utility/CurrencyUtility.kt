@@ -3,7 +3,9 @@ package ru.app.domain.utility
 import ru.app.domain.model.Currency
 import ru.app.domain.model.CurrencyDetails
 import java.util.*
-
+/**
+ * comment 2
+ * */
 class CurrencyUtility {
 
     fun getCurrenciesDetails(baseCurrencyDetails: CurrencyDetails): List<CurrencyDetails> {
